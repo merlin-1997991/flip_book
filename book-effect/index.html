@@ -11,13 +11,43 @@
 <body>
   <div class="book-container">
     <div class="flipbook">
-      <div class="hard">2025 HCM TEAM ACHIEVEMENTS <small> HCM Team</small></div>
+      <div class="hard"><h1>2025 Rosenxt VN Lookback</h1></div>
     <div class="hard"></div>
     <!-- Intro -->
     <div class="page-content">
       <h2>Our 2025</h2>
       <p>In 2025, performance at Rosenxt Vietnam was not defined by results alone.</p>
       <p>It was shaped by how our teams worked together, how they responded to constraints, and how they continuously improved their way of working while still delivering meaningful outcomes.</p>
+    </div>
+    <!-- Table of Contents -->
+    <div class="page-content">
+      <h2>Content</h2>
+      <table style="width: 100%; margin-top: 20px; border-collapse: collapse;">
+        <tr style="border-bottom: 2px solid #333;">
+          <th style="text-align: left; padding: 10px;">Section</th>
+          <th style="text-align: left; padding: 10px;">Page</th>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">2025 Rosenxt VN Lookback</td>
+          <td style="padding: 8px;">01</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">Green Team</td>
+          <td style="padding: 8px;">02</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">Red Team</td>
+          <td style="padding: 8px;">03</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">WLIN Features Team</td>
+          <td style="padding: 8px;">05</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px;">Back Office Team</td>
+          <td style="padding: 8px;">06</td>
+        </tr>
+      </table>
     </div>
     <!-- Content Pages -->
     <div class="page-content">
@@ -68,17 +98,70 @@
         </div>
       </div>
     </div>
-    <div>
-      <img src="images/img-3.png" alt="" />
-      <small> Third Page </small>
+    <!-- Page 03: Platform & Core Features -->
+    <div class="page-content">
+      <h3>Platform & Core Features</h3>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">8</span>
+          <span class="stat-label">new core features delivered on RNCP, extending platform capabilities for multiple ventures and customer workflows</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">99.97%</span>
+          <span class="stat-label">uptime for the Customer Portal, ensuring uninterrupted access for all ventures and customers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">0</span>
+          <span class="stat-label">severe findings from external security penetration testing, confirming strong platform security</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">increased delivery frequency with high quality by standardize & automate software delivery process</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <img src="images/img-4.png" alt="" />
-      <small> Trang thứ tư </small>
+    <!-- Page 04: GAIA Support Highlights -->
+    <div class="page-content">
+      <h3>GAIA Support Highlights</h3>
+      <div class="highlights">
+        <div class="highlight-item">
+          <strong>UT (Ultrasonic Testing)</strong>
+          <p>Delivered all UT feature enhancements to improve evaluators' ability to:</p>
+          <ul>
+            <li>Analyze pipeline data</li>
+            <li>Identify defects</li>
+            <li>Generate reliable, high-quality reports</li>
+          </ul>
+        </div>
+        <div class="highlight-item">
+          <strong>Trajectory (Kinematics)</strong>
+          <p>Enabled kinematics calculation to provide accurate trajectory & position data directly in Wave</p>
+        </div>
+        <div class="highlight-item">
+          <strong>Redfox (Data Transfer Automation)</strong>
+          <p>Automated the report transfer workflow from WAVE → Online Report, reducing manual steps and improving processing speed & quality.</p>
+        </div>
+      </div>
     </div>
-    <div>
-      <img src="images/img-5.png" alt="" />
-      <small> Trang thứ năm </small>
+    <!-- Page 05: VN Team Achievements -->
+    <div class="page-content">
+      <h3>VN Team Achievements</h3>
+      <div class="highlights">
+        <div class="highlight-item">
+          <strong>Community & Brand Engagement</strong>
+          <ul>
+            <li>Successfully hosted our first Talk-show at UIT – one of Vietnam's top national universities.</li>
+            <li>Welcomed <strong>250+ participants</strong>, marking a strong milestone for outreach, visibility, and talent engagement</li>
+          </ul>
+        </div>
+        <div class="highlight-item">
+          <strong>Team Culture & Collaboration</strong>
+          <ul>
+            <li>Wonderful Teambuilding – a perfect blend of "Performance with Fun, Teamwork with Trust"</li>
+            <li>Together, we completed a 250 km forest & mountain walking challenge</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div class="hard"></div>
     <div class="hard">Thank You <small> HCM Team</small></div>
@@ -95,10 +178,10 @@
 
     // Configuration
     const CONFIG = {
-      coverPages: [1, 2, 9, 10], // Define which pages are covers
-      startPage: 3,              // First content page
-      endPage: 8,                // Last content page
-      loopMode: 'content-only'   // Options: 'full-loop', 'content-only', 'stop-at-end'
+      coverPages: [1, 2, 13, 14], // Define which pages are covers
+      startPage: 3,               // First content page (Intro)
+      endPage: 12,                // Last content page
+      loopMode: 'content-only'    // Options: 'full-loop', 'content-only', 'stop-at-end'
     };
 
     // Initialize the flipbook
