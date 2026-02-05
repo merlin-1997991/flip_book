@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>2025 HCM TEAM ACHIEVEMENTS</title>
+</head>
+
+<body>
+  <div class="flipbook">
+    <div class="hard">2025 HCM TEAM ACHIEVEMENTS <small> HCM Team</small></div>
+    <div class="hard"></div>
+    <div>
+      <small>Lets Look At Some Amazing Achievements ❤️</small>
+      <small>Having fun while working</small>
+    </div>
+    <div>
+      <img src="images/img-1.png" alt="" />
+      <small> Trang đầu tiên </small>
+    </div>
+    <div>
+      <img src="images/img-2.png" alt="" />
+      <small> Trang thứ hai </small>
+    </div>
+    <div>
+      <img src="images/img-3.png" alt="" />
+      <small> Trang thứ ba </small>
+    </div>
+    <div>
+      <img src="images/img-4.png" alt="" />
+      <small> Trang thứ tư </small>
+    </div>
+    <div>
+      <img src="images/img-5.png" alt="" />
+      <small> Trang thứ năm </small>
+    </div>
+    <div class="hard"></div>
+    <div class="hard">Thank You <small> HCM Team</small></div>
+  </div>
+
+  <button id="autoFlipBtn" class="control-btn">Start Auto Flip</button>
+
+  <script src="jquery.js"></script>
+  <script src="turn.js"></script>
+  <script>
+    let autoFlipInterval = null;
+    let isAutoFlipping = false;
+
+    // Configuration
+    const CONFIG = {
+      coverPages: [1, 2, 9, 10], // Define which pages are covers
+      startPage: 3,              // First content page
+      endPage: 8,                // Last content page
+      loopMode: 'content-only'   // Options: 'full-loop', 'content-only', 'stop-at-end'
+    };
+
+    // Initialize the flipbook
+    $(".flipbook").turn({
+      width: 1000,
+      height: 600,
+      autoCenter: true,
+      duration: 1000 // Page turn animation duration
+    });
+
+    // Auto flip function with configurable speed
+    function startAutoFlip(speed = 2000, mode = CONFIG.loopMode) {
+      if (isAutoFlipping) return;
+      
+      isAutoFlipping = true;
+      $("#autoFlipBtn").text("Stop Auto Flip");
+      
+      // Start from first content page if currently on cover
+      const currentPage = $(".flipbook").turn("page");
+      if (currentPage <= 2) {
+        $(".flipbook").turn("page", CONFIG.startPage);
+      }
+      
+      autoFlipInterval = setInterval(() => {
+        const currentPage = $(".flipbook").turn("page");
+        const totalPages = $(".flipbook").turn("pages");
+        
+        switch(mode) {
+          case 'content-only':
+            // Flip only through content pages (3-8), then loop back
+            if (currentPage >= CONFIG.endPage) {
+              $(".flipbook").turn("page", CONFIG.startPage);
+            } else {
+              $(".flipbook").turn("next");
+            }
+            break;
+            
+          case 'stop-at-end':
+            // Stop when reaching the last page
+            if (currentPage >= totalPages) {
+              stopAutoFlip();
+            } else {
+              $(".flipbook").turn("next");
+            }
+            break;
+            
+          case 'full-loop':
+            // Loop through all pages including covers
+            if (currentPage >= totalPages) {
+              $(".flipbook").turn("page", 1);
+            } else {
+              $(".flipbook").turn("next");
+            }
+            break;
+        }
+      }, speed);
+    }
+
+    // Stop auto flip function
+    function stopAutoFlip() {
+      if (autoFlipInterval) {
+        clearInterval(autoFlipInterval);
+        autoFlipInterval = null;
+        isAutoFlipping = false;
+        $("#autoFlipBtn").text("Start Auto Flip");
+      }
+    }
+
+    // Toggle auto flip
+    function toggleAutoFlip(speed = 2000, mode = CONFIG.loopMode) {
+      if (isAutoFlipping) {
+        stopAutoFlip();
+      } else {
+        startAutoFlip(speed, mode);
+      }
+    }
+
+    // Button click handler
+    $("#autoFlipBtn").click(function() {
+      toggleAutoFlip(2000, 'content-only'); // 2000ms = 2 seconds between flips
+    });
+    
+    // Helper function to check if current page is a cover
+    function isOnCover() {
+      const currentPage = $(".flipbook").turn("page");
+      return CONFIG.coverPages.includes(currentPage);
+    }
+    
+    // Helper function to go to first content page
+    function goToContentStart() {
+      $(".flipbook").turn("page", CONFIG.startPage);
+    }
+    
+    // Helper function to go to last content page
+    function goToContentEnd() {
+      $(".flipbook").turn("page", CONFIG.endPage);
+    }
+
+    // Optional: Stop auto-flip when user manually interacts
+    $(".flipbook").bind("turning", function(event, page, view) {
+      if (isAutoFlipping && event.originalEvent) {
+        stopAutoFlip();
+      }
+    });
+  </script>
+</body>
+
+</html>
